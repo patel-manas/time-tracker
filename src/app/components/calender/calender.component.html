@@ -1,0 +1,31 @@
+<div class="cal-wrapper">
+  <div class="cal-container">
+    <div>
+    <p class="month">{{_month}} ,  {{_year}}</p>
+    <tt-cal-row
+      [cellDates]="calDays"
+      [startIndex]="todayDate"
+      (dayClicked)="dayClickHandler($event)"
+    ></tt-cal-row>
+  </div>
+    <section>
+        <tt-clock #ttclock></tt-clock>
+        <button mat-raised-button color="primary" (click)="loggedIn(ttclock)"> LogIn </button>
+        <div *ngIf="displayInfo">
+          Logged In: {{loggedInTime | date:'mediumTime' }}
+          <div *ngIf="wentOnBreak">
+            <div *ngFor="let _break of _breaks">
+                <p *ngIf = "_break.display">Went for {{ _break.desc}} from {{_break.time[0] | date:'mediumTime'}} to {{_break.time[1] | date:'mediumTime'}}</p>
+            </div>
+          </div> 
+          <button mat-raised-button  color="accent" *ngIf="!isOnBreak" (click) ="takeBreak(ttclock)"> Break </button>
+          <button mat-raised-button  color="primary" *ngIf="isOnBreak" (click) ="resume(ttclock)"> Resume </button>
+          <button mat-raised-button color="warn" (click) = "logout(ttclock)">Log Out</button>
+      </div>
+      <div *ngIf="loggedOut">      
+        Logged Out: {{loggedOutTime | date:'mediumTime' }}
+      </div>
+    </section>
+  </div>
+</div>
+

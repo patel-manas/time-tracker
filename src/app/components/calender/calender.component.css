@@ -1,0 +1,33 @@
+.cal-wrapper {
+    height: 800px;
+    width: 100%;
+    text-align: left;
+}
+
+.cal-container {
+    height: 400px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 54% auto;
+    grid-template-rows: 100%;
+    padding-top: 4px; 
+}
+.cal-container .month {
+    padding-right: 5px;
+    font-size: 22px;
+    padding-top: 14px;
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+}
+.cal-container tt-cal-row{
+    display: grid;
+    padding: 0px 20px;
+    grid-template-rows: repeat(5, auto);
+    grid-template-columns: repeat(7, auto);
+}
+.cal-container section{
+margin-left: 200px;
+width: 500px;
+}
+

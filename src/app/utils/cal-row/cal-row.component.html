@@ -1,0 +1,13 @@
+
+<div class="cell-wrapper" *ngFor = "let cell of cells; let i = index;">
+  <!-- {{i > (startIndex - 2) ? cellDates[i  - (startIndex - 1)].date : 'X'}} / {{todayDate}} -->
+    <tt-cal-cell 
+      *ngIf = "i > (startIndex - 2); else emptyCell"
+      [_class] = "i > (startIndex - 2) && cellDates[i  - (startIndex - 1)].date == todayDate ? 'highlight-cyan' : ''" 
+      [date]="cellDates[i  - (startIndex - 1)]"
+      (onCellClick) = "cellClicked($event)">
+    </tt-cal-cell>
+</div>
+<ng-template #emptyCell>
+  <tt-cal-cell [date]="{date: '', day: 7}" ></tt-cal-cell>
+</ng-template>
